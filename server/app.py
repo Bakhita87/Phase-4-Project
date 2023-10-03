@@ -17,7 +17,7 @@ db.init_app(app)
 
 @app.route('/')
 def home():
-    return 'Heroes will save us for sure!!!'
+    return 'Review All Restaurants!!!'
 
 
 if __name__ == '__main__':
