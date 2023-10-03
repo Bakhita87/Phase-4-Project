@@ -1,6 +1,6 @@
 from flask import Flask, current_app, make_response, request, jsonify, g
 from dbconfig import db 
-from flask_cors import CORS
+
 
 from flask_migrate import Migrate
 import os 
@@ -14,4 +14,3 @@ migrate = Migrate(app, db)
 
 db.init_app(app)
 
-CORS(app)
