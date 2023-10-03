@@ -5,6 +5,12 @@
       "email": "emwanzia532@gmail.com",
       "password": "1234",
       "id": 1
+    },
+    {
+      "name": "Daniel",
+      "email": "danielngigi@gmail.com",
+      "password": "4321",
+      "id": 2
     }
   ]
 }
