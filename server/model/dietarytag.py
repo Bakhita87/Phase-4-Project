@@ -1,4 +1,4 @@
-from dbconfig import db
+from dbconfig import db;
 
 class DietaryTag(db.Model):
     __tablename__ = 'dietary_tags'
@@ -6,4 +6,7 @@ class DietaryTag(db.Model):
     DietaryTag_ID = db.Column(db.Integer, primary_key=True)
     Name = db.Column(db.String)
 
-    restaurants = db.relationship("Restaurant", secondary="restaurant_dietary_tags", back_populates="dietary_tags")
+    restaurants = db.relationship("Restaurant", secondary="restaurant_dietary_tags")
+
+
+

@@ -24,20 +24,20 @@ function Navbar() {
       <label className="menu-icon" for="menu-btn">
         <span className="nav-icon"></span>
       </label>
-      <ul className="menu">
-        <li>
+      <li className="menu">
+        <ul>
           <Link to="#">Header</Link>
-        </li>
-        <li>
+        </ul>
+        <ul>
           <Link to="#">Products</Link>
-        </li>
-        <li>
+        </ul>
+        <ul>
           <Link to="#">About</Link>
-        </li>
-        <li>
+        </ul>
+        <ul>
           <Link to="#">Contact</Link>
-        </li>
-      </ul>
+        </ul>
+      </li>
     </nav>
   );
 }
