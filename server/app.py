@@ -14,3 +14,12 @@ migrate = Migrate(app, db)
 
 db.init_app(app)
 
+
+@app.route('/')
+def home():
+    return 'Review All Restaurants!!!'
+
+
+if __name__ == '__main__':
+    app.run(port=5555)
+
