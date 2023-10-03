@@ -1,10 +1,12 @@
 from flask import Flask, current_app, make_response, request, jsonify, g
 from dbconfig import db
-from model import dietarytag,menuitem,restaurant,review,user
+from model import restaurant,review,user,DietaryTag, MenuItem 
+
 
 
 from flask_migrate import Migrate
-import os 
+import os
+
 
 app = Flask(__name__)
 
