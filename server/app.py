@@ -1,5 +1,5 @@
 from flask import Flask, current_app, make_response, request, jsonify, g
-from dbconfig import db 
+from config import db 
 
 
 from flask_migrate import Migrate

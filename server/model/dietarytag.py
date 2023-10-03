@@ -1,4 +1,4 @@
-from dbconfig import db
+from config import db
 
 class DietaryTag(db.Model):
     __tablename__ = 'dietary_tags'
