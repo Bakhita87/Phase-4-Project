@@ -1,5 +1,10 @@
 from flask import Flask, current_app, make_response, request, jsonify, g
+<<<<<<< HEAD
 from config import db 
+=======
+from dbconfig import db
+from model import dietarytag,menuitem,restaurant,review,user
+>>>>>>> refs/remotes/origin/main
 
 
 from flask_migrate import Migrate
@@ -14,7 +19,10 @@ migrate = Migrate(app, db)
 
 db.init_app(app)
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> refs/remotes/origin/main
 @app.route('/')
 def home():
     return 'Review All Restaurants!!!'
@@ -22,4 +30,7 @@ def home():
 
 if __name__ == '__main__':
     app.run(port=5555)
+<<<<<<< HEAD
 
+=======
+>>>>>>> refs/remotes/origin/main
