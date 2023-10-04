@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import HashLoader from "react-spinners/HashLoader";
-
+import "../styles/Home.css";
 import Navbar from "./Navbar";
 
 function Home() {
@@ -23,9 +23,9 @@ function Home() {
           size={500}
         />
       ) : (
-        <>
+        <div className="home">
           <Navbar />
-        </>
+        </div>
       )}
     </div>
   );

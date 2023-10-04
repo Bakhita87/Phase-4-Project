@@ -24,5 +24,56 @@
       "password": "9089",
       "id": 4
     }
+  ],
+  "restaurants": [
+    {
+      "id": 1,
+      "name": "Restaurant 1",
+      "image": "restaurant1.jpg",
+      "description": "A cozy place with delicious food.",
+      "address": "123 Main St"
+    },
+    {
+      "id": 2,
+      "name": "Restaurant 2",
+      "image": "restaurant2.jpg",
+      "description": "Authentic cuisine in a vibrant atmosphere.",
+      "address": "456 Elm St"
+    }
+  ],
+  "reviews": [
+    {
+      "id": 1,
+      "restaurantId": 1,
+      "reviewText": "Great food and excellent service!",
+      "rating": 4.5
+    },
+    {
+      "id": 2,
+      "restaurantId": 1,
+      "reviewText": "Amazing experience. Will visit again!",
+      "rating": 5
+    },
+    {
+      "id": 3,
+      "restaurantId": 2,
+      "reviewText": "The ambiance was fantastic, and the food was superb.",
+      "rating": 4
+    },
+    {
+      "reviewText": "",
+      "rating": 0,
+      "id": 4
+    },
+    {
+      "reviewText": "",
+      "rating": 0,
+      "id": 5
+    },
+    {
+      "reviewText": "scsc",
+      "rating": "2",
+      "id": 6
+    }
   ]
 }
