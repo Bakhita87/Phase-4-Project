@@ -12,11 +12,10 @@ const Footer = () => {
   return (
     <div className="footer-container">
       <div>
-        <h1 className="footer-logo">REACT.</h1>
+        <h1 className="footer-logo">REVIEWS.</h1>
         <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id odit
-          ullam iste repellat consequatur libero reiciendis, blanditiis
-          accusantium.
+          We are dedicated to preview your opinions on our restaurants and we
+          humbly accept any mistakes made and promise to correct them at once!
         </p>
         <div className="social-icons">
           <FaFacebookSquare />
@@ -27,7 +26,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="footer-column">
-        <h6 className="column-title">Solutions</h6>
+        <h6 className="column-title">SOLLUTIONS</h6>
         <ul className="column-list">
           <li>Analytics</li>
           <li>Marketing</li>
@@ -36,30 +35,12 @@ const Footer = () => {
         </ul>
       </div>
       <div className="footer-column">
-        <h6 className="column-title">Support</h6>
+        <h6 className="column-title">SUPPORT</h6>
         <ul className="column-list">
           <li>Pricing</li>
           <li>Documentation</li>
           <li>Guides</li>
           <li>API Status</li>
-        </ul>
-      </div>
-      <div className="footer-column">
-        <h6 className="column-title">Company</h6>
-        <ul className="column-list">
-          <li>About</li>
-          <li>Blog</li>
-          <li>Jobs</li>
-          <li>Press</li>
-          <li>Careers</li>
-        </ul>
-      </div>
-      <div className="footer-column">
-        <h6 className="column-title">Legal</h6>
-        <ul className="column-list">
-          <li>Claim</li>
-          <li>Policy</li>
-          <li>Terms</li>
         </ul>
       </div>
     </div>

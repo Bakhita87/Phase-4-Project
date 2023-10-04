@@ -97,6 +97,25 @@ def login():
         print("Invalid email or password")
         return jsonify({'message': 'Invalid email or password'}), 401
 
+@app.route('/restaurants', methods=['GET'])
+def get_all_restaurants():
+    restaurants = Restaurant.query.all()
+    restaurant_list = []
+
+    for restaurant in restaurants:
+        restaurant_data = {
+            "Restaurant_ID": restaurant.Restaurant_ID,
+            "Name": restaurant.Name,
+            "Location": restaurant.Location,
+            "Amenities": restaurant.Amenities,
+            "Description": restaurant.Description,
+            "Owner_User_ID": restaurant.Owner_User_ID,
+            "Image_URL": restaurant.Image_URL  
+        }
+        restaurant_list.append(restaurant_data)
+
+    return jsonify(restaurant_list)
+
 @app.route("/reviews", methods=["GET"])
 def get_reviews():
     reviews = Review.query.all()

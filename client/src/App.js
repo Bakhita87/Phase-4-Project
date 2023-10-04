@@ -6,6 +6,7 @@ import Home from "./components/Home";
 import SignUp from "./components/Signup";
 import Login from "./components/Login";
 import Reviews from "./components/Reviews";
+import Restaurant from "./components/Restaurant";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/reviews" element={<Reviews />} />
+        <Route path="/restaurants" element={<Restaurant />} />
       </Routes>
     </Router>
   );
