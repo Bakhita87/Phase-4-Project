@@ -21,6 +21,17 @@ function Navbar() {
     navigate("/");
   };
 
+  const handleContact = () => {
+    navigate("/contact");
+  };
+
+  const handleAbout = () => {
+    navigate("/about");
+  };
+
+  
+
+
   useEffect(() => {
     window.addEventListener("scroll", changeBackground);
 
@@ -51,10 +62,10 @@ function Navbar() {
           <Link to="/restaurants">Restaurants</Link>
         </ul>
         <ul>
-          <Link to="/about">About</Link>
+          <Link to="/about" onClick={handleAbout}>About</Link>
         </ul>
         <ul>
-          <Link to="#">Contact</Link>
+          <Link to="/contact" onClick={handleContact}>Contact</Link>
         </ul>
         <ul>
           <Link to="#" onClick={handleLogout}>
