@@ -35,10 +35,10 @@ function SignUp() {
     }
 
     try {
-      await axios.post("http://localhost:3001/users", {
-        name,
-        email,
-        password,
+      await axios.post("http://localhost:5000/users", {
+        Username: name,
+        Email: email,
+        Password: password,
       });
       console.log("Redirecting to login page...");
       navigate("/login");

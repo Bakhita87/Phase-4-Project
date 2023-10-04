@@ -33,6 +33,7 @@ nav li ul a {
   transition: 0.2s ease-in-out;
 }
 nav li ul a:hover {
+  cursor: pointer;
   background-color: #bf2222;
   color: #ffffff;
   box-shadow: 5px 10px 30px rgba(255, 2, 2, 0.336);

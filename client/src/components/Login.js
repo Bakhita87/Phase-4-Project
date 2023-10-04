@@ -27,21 +27,34 @@ function Login() {
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleLoginClick = async () => {
+    // Client-side validation
+    if (!email || !password) {
+      setErrorMessage("Please fill in all the fields.");
+      return;
+    }
+
     try {
-      const response = await axios.get(
-        `http://localhost:3001/users?email=${email}&password=${password}`
-      );
+      const response = await axios.post("http://localhost:5000/login", {
+        email,
+        password,
+      });
 
-      const userData = response.data[0];
-
-      if (userData) {
+      if (response.status === 200) {
         setErrorMessage("");
         navigate("/home");
       } else {
         setErrorMessage("Invalid email or password.");
       }
     } catch (error) {
-      console.error("Error logging in:", error);
+      if (error.response) {
+        if (error.response.status === 401) {
+          setErrorMessage("Invalid email or password.");
+        } else {
+          setErrorMessage("An error occurred while logging in.");
+        }
+      } else {
+        setErrorMessage("Network error. Please try again later.");
+      }
     }
   };
 

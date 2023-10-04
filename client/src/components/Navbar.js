@@ -1,41 +1,65 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-scroll";
+import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import "../styles/Navbar.css";
 
 function Navbar() {
-  const [nav, setnav] = useState(false);
+  const [nav, setNav] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const changeBackground = () => {
     if (window.scrollY >= 50) {
-      setnav(true);
+      setNav(true);
     } else {
-      setnav(false);
+      setNav(false);
     }
   };
 
-  window.addEventListener("scroll", changeBackground);
+  const handleLogout = () => {
+    navigate("/");
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", changeBackground);
+
+    return () => {
+      window.removeEventListener("scroll", changeBackground);
+    };
+  }, []);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
     <nav className={nav ? "nav active" : "nav"}>
       <Link to="main" className="logo">
         <img src={logo} alt="" />
       </Link>
       <input className="menu-btn" type="checkbox" id="menu-btn" />
-      <label className="menu-icon" for="menu-btn">
+      <label
+        className={`menu-icon ${menuOpen ? "open" : ""}`}
+        htmlFor="menu-btn"
+        onClick={toggleMenu}>
         <span className="nav-icon"></span>
       </label>
-      <li className="menu">
+
+      <li className={`menu ${menuOpen ? "open" : ""}`}>
         <ul>
-          <Link to="#">Header</Link>
-        </ul>
-        <ul>
-          <Link to="#">Products</Link>
+          <Link to="/restaurants">Restaurants</Link>
         </ul>
         <ul>
           <Link to="#">About</Link>
         </ul>
         <ul>
           <Link to="#">Contact</Link>
+        </ul>
+        <ul>
+          <Link to="#" onClick={handleLogout}>
+            Logout
+          </Link>
         </ul>
       </li>
     </nav>

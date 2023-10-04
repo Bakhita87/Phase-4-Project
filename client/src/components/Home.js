@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import HashLoader from "react-spinners/HashLoader";
-
-import Navbar from "./Navbar";
+import "../styles/Home.css";
+import Reviews from "./Reviews";
+// import Navbar from "./Navbar";
 
 function Home() {
   const [loading, setLoading] = useState(false);
@@ -23,9 +24,10 @@ function Home() {
           size={500}
         />
       ) : (
-        <>
-          <Navbar />
-        </>
+        <div className="home">
+          {/* <Navbar /> */}
+          <Reviews />
+        </div>
       )}
     </div>
   );
