@@ -7,6 +7,7 @@ import Newsletter from "./Newsletter";
 
 function Welcome() {
   const [loading, setLoading] = useState(false);
+  const [showNewsletter, setShowNewsletter] = useState(true); // Manage the visibility of the Newsletter component
   const override = css`
     display: block;
     border-color: red;
@@ -19,6 +20,11 @@ function Welcome() {
       setLoading(false);
     }, 3000);
   }, []);
+
+  const handleNewsletterClose = () => {
+    setShowNewsletter(false);
+  };
+
   return (
     <div>
       {" "}
@@ -32,7 +38,7 @@ function Welcome() {
       ) : (
         <>
           <Hero />
-          <Newsletter />
+          {showNewsletter && <Newsletter onClose={handleNewsletterClose} />}
           <Footer />
         </>
       )}
@@ -41,36 +47,3 @@ function Welcome() {
 }
 
 export default Welcome;
-
-// import React, { useEffect, useState } from "react";
-// import { css } from "@emotion/react";
-// import HashLoader from "react-spinners/HashLoader";
-
-// const [loading, setLoading] = useState(false);
-// const override = css`
-//   display: block;
-//   border-color: red;
-//   margin-top: 20%;
-// `;
-
-// useEffect(() => {
-//   setLoading(true);
-//   setTimeout(() => {
-//     setLoading(false);
-//   }, 3000);
-// }, []);
-// return (
-//   <div>
-//     {" "}
-//     {loading ? (
-//       <HashLoader
-//         color={"#3d2514"}
-//         loading={loading}
-//         css={override}
-//         size={40}
-//       />
-//     ) : (
-//       <></>
-//     )}
-//   </div>
-// );
