@@ -1,0 +1,52 @@
+/* Footer container */
+.footer-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 16px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  color: #888;
+}
+
+/* Logo */
+.footer-logo {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #00df9a;
+}
+
+/* Social media icons */
+.social-icons {
+  display: flex;
+  justify-content: space-between;
+  width: 75%;
+  margin-top: 16px;
+}
+
+.social-icons svg {
+  font-size: 30px;
+}
+
+/* Column */
+.footer-column {
+  flex: 1;
+  margin-top: 16px;
+}
+
+/* Column title */
+.column-title {
+  font-weight: 500;
+  color: #888;
+}
+
+/* Column list */
+.column-list {
+  list-style: none;
+  padding: 0;
+}
+
+.column-list li {
+  padding: 8px 0;
+  font-size: 14px;
+}

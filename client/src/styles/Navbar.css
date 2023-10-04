@@ -27,7 +27,7 @@ nav li ul a {
   font-size: 1.2rem;
   text-transform: uppercase;
   font-weight: 500;
-  color: #3d2514;
+  color: #b82e03;
   letter-spacing: 1px;
   border-radius: 3px;
   transition: 0.2s ease-in-out;
@@ -75,7 +75,7 @@ nav .menu-btn,
     user-select: none;
   }
   nav .menu-icon .nav-icon {
-    background-color: #3d2514;
+    background-color: #ff3c00;
     display: block;
     height: 2px;
     position: relative;

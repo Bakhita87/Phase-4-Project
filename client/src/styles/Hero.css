@@ -1,0 +1,66 @@
+/* Hero container */
+.hero-container {
+  color: #fff;
+  text-align: center;
+  background: #000;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 96px; /* Adjust as needed to align content */
+}
+
+/* Title */
+.hero-title {
+  font-size: 4rem;
+  font-weight: bold;
+  margin: 0;
+  color: #00df9a;
+  padding: 1rem 0;
+}
+
+/* Subtitle */
+.hero-subtitle {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+  padding: 0.5rem 0;
+}
+
+/* Typed text container */
+.typed-container {
+  display: flex;
+  align-items: center;
+}
+
+/* Typed text */
+.typed-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 20px;
+  color: #fff;
+}
+
+/* Description */
+.hero-description {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ccc;
+  margin-top: 1rem;
+}
+
+/* Get Started button */
+.get-started-button {
+  background-color: #00df9a;
+  color: #000;
+  border: none;
+  border-radius: 4px;
+  font-weight: medium;
+  width: 200px;
+  margin: 1rem auto;
+  padding: 12px 24px;
+  cursor: pointer;
+}

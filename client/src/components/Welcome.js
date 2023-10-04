@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { css } from "@emotion/react";
 import HashLoader from "react-spinners/HashLoader";
-import { Link } from "react-router-dom";
+import Hero from "./Hero";
+import Footer from "./Footer";
+import Newsletter from "./Newsletter";
 
 function Welcome() {
   const [loading, setLoading] = useState(false);
@@ -29,13 +31,9 @@ function Welcome() {
         />
       ) : (
         <>
-          {" "}
-          <div className="home container">
-            <h1 className="heading">Your Opinion Matters</h1>
-            <Link to="/signup" className="btn btn-primary btn-lg">
-              Get Started
-            </Link>
-          </div>
+          <Hero />
+          <Newsletter />
+          <Footer />
         </>
       )}
     </div>
