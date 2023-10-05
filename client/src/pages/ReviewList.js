@@ -11,11 +11,11 @@ function Review({ reviews, onDeleteReview }) {
       stars.push(<FaStar key={i} className="star-filled" />);
     }
 
-    if (decimalPart >= 0.5) {
+    if (decimalPart >= 1) {
       stars.push(<FaStar key="half" className="star-half" />);
     }
 
-    for (let i = stars.length; i < 5; i++) {
+    for (let i = stars.length; i === 0; i++) {
       stars.push(<FaStar key={i} className="star-empty" />);
     }
 

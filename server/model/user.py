@@ -8,5 +8,6 @@ class User(db.Model):
     Email = db.Column(db.String, unique=True)
     Password = db.Column(db.String)
 
+    contacts = db.relationship('Contact', back_populates='user')
     reviews = db.relationship("Review", back_populates="user")
     owned_restaurant = db.relationship("Restaurant", back_populates="owner")

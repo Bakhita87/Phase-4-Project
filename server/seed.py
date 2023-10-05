@@ -3,6 +3,8 @@ from config import db
 from model.review import Review, datetime
 from model.user import User
 from model.restaurant import Restaurant
+from model.contact import Contact
+
 
 with app.app_context():
         
@@ -15,15 +17,17 @@ with app.app_context():
 
     print('Deleting existing restaurants...')
     Restaurant.query.delete()
+
+    print('Deleting existing contacts...')
+    Contact.query.delete()
     
     print('Creating users...')
-    user1 = User(Username='Ann ', Email='ann@example.com', Password='password1')
+    user1 = User(Username='Ann', Email='ann@example.com', Password='password1')
     user2 = User(Username='clive moyia', Email='clive@example.com', Password='password2')
     user3 = User(Username='bakhita', Email='kita@example.com', Password='password3')
     user4 = User(Username='catherine', Email='cate@example.com', Password='password4')
     user5 = User(Username='emanuel', Email='manu@example.com', Password='password5')
 
-    # Assign unique User IDs to users
     user1.User_ID = 1
     user2.User_ID = 2
     user3.User_ID = 3
@@ -111,8 +115,50 @@ with app.app_context():
         user=user2,
         restaurant=restaurant5
     )
+  
+    print('Creating contact details...')
 
-    db.session.add_all([user1, user2, restaurant1, restaurant2, restaurant3, restaurant4,restaurant5, review1, review2, review3, review4, review5])
-    db.session.commit()
+    contact1 = Contact(
+        name=user1.Username,
+        email=user1.Email,
+        message='Hello, this is contact 1',
+        user=user1
+    )
 
-print("Database seeded successfully.")
+    contact2 = Contact(
+        name=user2.Username,
+        email=user2.Email,
+        message='Hello, this is contact 2',
+        user=user2
+    )
+
+    contact3 = Contact(
+        name=user3.Username,
+        email=user3.Email,
+        message='Hello, this is contact 3',
+        user=user3
+    )
+
+    contact4 = Contact(
+        name=user4.Username,
+        email=user4.Email,
+        message='Hello, this is contact 4',
+        user=user4
+    )
+
+    contact5 = Contact(
+        name=user5.Username,
+        email=user5.Email,
+        message='Hello, this is contact 5',
+        user=user5
+    )
+
+
+    db.session.add_all([user1, user2, user3, user4, user5, restaurant1, restaurant2, restaurant3, restaurant4,restaurant5, review1, review2, review3, review4, review5, contact1, contact2, contact3, contact4, contact5])
+    db.session.commit()   
+    
+    
+    
+    
+
+

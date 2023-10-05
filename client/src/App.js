@@ -10,6 +10,7 @@ import RestaurantList from "./pages/Restaurantlist";
 import Recover from "./components/Recover";
 import About from "./pages/About";
 import PasswordReset from "./utils/passwordreset";
+import Contact from "./pages/Contact";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Welcome />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/recover" element={<Recover />} />

@@ -8,6 +8,7 @@ from datetime import datetime
 from model.review import Review
 from model.restaurant import Restaurant
 from model.user import User
+from model.contact import Contact
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
@@ -234,6 +235,42 @@ def delete_review(review_id):
     else:
         return jsonify({"message": "Review not found"}), 404
 
+@app.route('/contacts', methods=['POST'])
+def create_contact():
+    data = request.json
+
+    if 'name' not in data or 'email' not in data or 'message' not in data:
+        return jsonify({'message': 'Please provide name, email, and message'}), 400
+
+    name = data['name']
+    email = data['email']
+    message = data['message']
+
+    new_contact = Contact(name=name, email=email, message=message)
+
+    try:
+        db.session.add(new_contact)
+        db.session.commit()
+        return jsonify({'message': 'Contact form submitted successfully'}), 201
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'message': 'Failed to submit contact form'}), 500
+
+@app.route('/contacts', methods=['GET'])
+def get_contacts():
+    contacts = Contact.query.all()
+    contact_list = []
+
+    for contact in contacts:
+        contact_data = {
+            'id': contact.id,
+            'name': contact.name,
+            'email': contact.email,
+            'message': contact.message
+        }
+        contact_list.append(contact_data)
+
+    return jsonify(contact_list)
 
 
 
