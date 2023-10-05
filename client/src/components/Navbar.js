@@ -29,7 +29,7 @@ function Navbar() {
 
   return (
     <nav className={nav ? "nav active" : "nav"}>
-      <Link to="/" className="logo">
+      <Link to="/home" className="logo">
         {" "}
         <img src={logo} alt="" />
       </Link>
@@ -46,7 +46,7 @@ function Navbar() {
           <Link to="/restaurantlist">Restaurants</Link>
         </ul>
         <ul>
-          <Link to="/reviews">About</Link>
+          <Link to="/about">About</Link>
         </ul>
         <ul>
           <Link to="/contact">Contact</Link>
