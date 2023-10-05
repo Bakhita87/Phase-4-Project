@@ -1,5 +1,11 @@
+<<<<<<< HEAD
+from flask import Flask, current_app, make_response, request, jsonify, g
+from config import db 
+from model import restaurant, review, user, menu_item, diettag
+=======
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
+>>>>>>> 8d82372bf28eaad914373589d57384a3af272deb
 from flask_migrate import Migrate
 from flask_cors import CORS
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -159,4 +165,8 @@ def delete_review(review_id):
 
 
 if __name__ == '__main__':
+<<<<<<< HEAD
+    app.run(port=5555)
+=======
     app.run(debug=True)
+>>>>>>> 8d82372bf28eaad914373589d57384a3af272deb
