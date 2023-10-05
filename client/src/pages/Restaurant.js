@@ -51,8 +51,6 @@ function Restaurant() {
       .catch((error) => {
         console.error("Error fetching restaurant data:", error);
       });
-
-    // Fetch reviews for the restaurant
     fetch(`http://127.0.0.1:5000/reviews?restaurant_id=${restaurantId}`)
       .then((response) => response.json())
       .then((data) => {
@@ -88,7 +86,7 @@ function Restaurant() {
             <div className="details">
               <Header restaurantName={Name} />
               <OtherContent amenities={Amenities} description={Description} />
-              <AddReview onAddReview={addReview} />
+              <AddReview onAddReview={addReview} restaurantId={restaurantId} />
               <Review reviews={reviews} onDeleteReview={deleteReview} />
             </div>
           </div>

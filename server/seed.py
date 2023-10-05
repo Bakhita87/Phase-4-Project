@@ -84,30 +84,30 @@ with app.app_context():
         restaurant=restaurant1
     )
     review2 = Review(
-        Rating=4,
-        Content="This is a great restaurant!",
-        Date_Created=datetime(2023, 10, 5),
+        Rating=5,
+        Content="Yeah I love It!",
+        Date_Created=datetime(2011, 11, 1),
         user=user2,
         restaurant=restaurant2
     )
     review3 = Review(
-        Rating=4,
-        Content="This is a great restaurant!",
-        Date_Created=datetime(2023, 10, 5),
+        Rating=3,
+        Content="Not That Impressive!",
+        Date_Created=datetime(2001, 12, 4),
         user=user2,
         restaurant=restaurant3
     )
     review4 = Review(
-        Rating=4,
-        Content="This is a great restaurant!",
-        Date_Created=datetime(2023, 10, 5),
+        Rating=0,
+        Content="Think I will never dine again!",
+        Date_Created=datetime(2029, 6, 9),
         user=user2,
         restaurant=restaurant4
     )
     review5 = Review(
         Rating=4,
-        Content="This is a great restaurant!",
-        Date_Created=datetime(2023, 10, 5),
+        Content="Absolute beauty!",
+        Date_Created=datetime(2013, 1, 5),
         user=user2,
         restaurant=restaurant5
     )

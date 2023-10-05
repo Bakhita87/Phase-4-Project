@@ -1,32 +1,22 @@
 import React, { useState } from "react";
 
-function AddReview({ onAddReview }) {
+function AddReview({ onAddReview, restaurantId }) {
   const [rating, setRating] = useState("");
   const [content, setContent] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const newRating = parseFloat(rating);
+
     const newReview = {
-      Rating: rating,
+      Rating: newRating,
       Content: content,
       Date_Created: new Date().toLocaleDateString(),
+      Restaurant_ID: restaurantId,
     };
 
-    fetch("http://127.0.0.1:5000/reviews", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newReview),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        onAddReview(data);
-      })
-      .catch((error) => {
-        console.error("Error adding review:", error);
-      });
+    onAddReview(newReview);
 
     setRating("");
     setContent("");

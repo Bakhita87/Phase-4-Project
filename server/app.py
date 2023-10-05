@@ -194,13 +194,13 @@ def get_reviews():
 def create_review():
     data = request.json
 
-    if 'user_id' not in data or 'restaurant_id' not in data or 'rating' not in data or 'content' not in data:
-        return jsonify({'message': 'Please provide user_id, restaurant_id, rating, and content'}), 400
+    if 'User_ID' not in data or 'Restaurant_ID' not in data or 'Rating' not in data or 'Content' not in data:
+        return jsonify({'message': 'Please provide User_ID, Restaurant_ID, Rating, and Content'}), 400
 
-    user_id = data['user_id']
-    restaurant_id = data['restaurant_id']
-    rating = data['rating']
-    content = data['content']
+    user_id = data['User_ID']
+    restaurant_id = data['Restaurant_ID']
+    rating = data['Rating']
+    content = data['Content']
 
     user = User.query.get(user_id)
     restaurant = Restaurant.query.get(restaurant_id)
@@ -212,7 +212,8 @@ def create_review():
         User_ID=user_id,
         Restaurant_ID=restaurant_id,
         Rating=rating,
-        Content=content
+        Content=content,
+        Date_Created=datetime.now()
     )
 
     try:
@@ -222,7 +223,7 @@ def create_review():
     except Exception as e:
         db.session.rollback()
         return jsonify({'message': 'Failed to create review'}), 500
-
+    
 @app.route("/delete-review/<int:review_id>", methods=["DELETE"])
 def delete_review(review_id):
     review_entry = Review.query.get(review_id)
