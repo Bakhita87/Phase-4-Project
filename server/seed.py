@@ -24,7 +24,7 @@ with app.app_context():
     restaurant1 = Restaurant(
         Name='Babuze Eats',        
         Location='123 Main St',
-        Amenities='Amenities A',
+        Amenities='Amenities :POol table',
         Description='A cozy place with delicious food.',
         owner=user1,
         Image_URL='https://d2o0s5gkmp1j1.cloudfront.net/20170202_catalystcafe_0403.jpg' 
@@ -32,7 +32,7 @@ with app.app_context():
     restaurant2 = Restaurant(
         Name='Annies Hut',
         Location='456 Elm St',
-        Amenities='Amenities A',
+        Amenities='Amenities : SWimming pool',
         Description='Authentic cuisine in a vibrant atmosphere.',
         owner=user2,
         Image_URL='https://res.cloudinary.com/brickandbatten/images/w_2560,h_2048,c_scale/f_auto,q_auto/v1661299821/wordpress_assets/59026-Jogging-Path-TricornBlackSW-Front-a_4683279cfc/59026-Jogging-Path-TricornBlackSW-Front-a_4683279cfc.jpg?_i=AA' 
