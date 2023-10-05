@@ -97,6 +97,41 @@ def login():
         print("Invalid email or password")
         return jsonify({'message': 'Invalid email or password'}), 401
 
+@app.route('/users/retrieve-by-email', methods=['POST'])
+def retrieve_user_by_email():
+    data = request.json
+
+    if 'Email' not in data:
+        return jsonify({'message': 'Please provide an email address'}), 400
+
+    email = data['Email']
+
+    user = User.query.filter_by(Email=email).first()
+
+    if user:
+        user_data = {
+            "User_ID": user.User_ID,
+            "Username": user.Username,
+            "Email": user.Email
+        }
+        return jsonify(user_data), 200
+    else:
+        return jsonify({'message': 'User not found'}), 404
+
+
+@app.route('/users/retrieve-password/<int:user_id>', methods=['GET'])
+def retrieve_password_by_user_id(user_id):
+    user = User.query.get(user_id)
+
+    if user:
+        user_data = {
+            "User_ID": user.User_ID,
+            "Password": user.Password
+        }
+        return jsonify(user_data), 200
+    else:
+        return jsonify({'message': 'User not found'}), 404
+
 @app.route('/restaurants', methods=['GET'])
 def get_all_restaurants():
     restaurants = Restaurant.query.all()
@@ -137,7 +172,8 @@ def get_restaurant_by_id(restaurant_id):
 
 @app.route("/reviews", methods=["GET"])
 def get_reviews():
-    restaurant_id = request.args.get("restaurant_id")  
+    restaurant_id = request.args.get("restaurant_id")
+    
     reviews = Review.query.filter_by(Restaurant_ID=restaurant_id).all()
 
     review_list = []
@@ -146,7 +182,7 @@ def get_reviews():
             "Review_ID": review.Review_ID,
             "Rating": review.Rating,
             "Content": review.Content,
-            "Date_Created": review.Date_Created,
+            "Date_Created": review.Date_Created.strftime("%Y-%m-%d %H:%M:%S"),  
             "User_ID": review.User_ID,
             "Restaurant_ID": review.Restaurant_ID,
         }

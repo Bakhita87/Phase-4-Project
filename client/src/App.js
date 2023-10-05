@@ -9,6 +9,7 @@ import Restaurant from "./pages/Restaurant";
 import RestaurantList from "./pages/Restaurantlist";
 import Recover from "./components/Recover";
 import About from "./pages/About";
+import PasswordReset from "./utils/passwordreset";
 
 function App() {
   return (
@@ -20,6 +21,10 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/recover" element={<Recover />} />
         <Route path="/about" element={<About />} />
+        <Route
+          path="/reset/:userId/:userPassword"
+          component={<PasswordReset />}
+        />
         <Route path="/restaurants/:restaurantId" element={<Restaurant />} />
         <Route path="/restaurantlist" element={<RestaurantList />} />
       </Routes>

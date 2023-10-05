@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { css } from "@emotion/react";
 import HashLoader from "react-spinners/HashLoader";
 import "../styles/SignUp.css"; // You can reuse the styles from SignUp.css
@@ -7,6 +7,7 @@ import email_icon from "../assets/email.png";
 
 function Recover() {
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const override = css`
     display: block;
@@ -31,23 +32,63 @@ function Recover() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      const response = await fetch("http://localhost:5000/users", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email }),
-      });
+    // Basic email format validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setMessage("Please enter a valid email address.");
+      return;
+    }
 
-      if (response.ok) {
-        setMessage("Password recovery email sent. Please check your inbox.");
+    try {
+      setLoading(true);
+
+      // Request user data by email for password recovery
+      const userDataResponse = await fetch(
+        "http://localhost:5000/users/retrieve-by-email",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
+        }
+      );
+
+      if (userDataResponse.ok) {
+        // If the email exists in the database, retrieve the user data
+        const userData = await userDataResponse.json();
+
+        // Now you have the user's data, including User_ID
+        const userId = userData.User_ID;
+
+        // Request the user's password by User_ID for password recovery
+        const passwordResponse = await fetch(
+          `http://localhost:5000/users/retrieve-password/${userId}`
+        );
+
+        if (passwordResponse.ok) {
+          const userId = userData.User_ID;
+          const userPassword = userData.Password;
+
+          // Redirect to the password reset page with userId and userPassword as params
+          navigate(`/reset/${userId}/${userPassword}`);
+          // Implement your password recovery logic here
+          // Send an email with a reset link or provide a form to reset the password
+          // For example, you can navigate the user to a password reset page
+          // and pass userId and userPassword as query parameters
+          // using React Router to create a password reset form
+        } else {
+          const data = await passwordResponse.json();
+          setMessage(data.message || "An error occurred.");
+        }
       } else {
-        const data = await response.json();
-        setMessage(data.message);
+        const data = await userDataResponse.json();
+        setMessage(data.message || "An error occurred.");
       }
     } catch (error) {
       setMessage("An error occurred. Please try again later.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -79,8 +120,8 @@ function Recover() {
                   required
                 />
               </div>
-              <button type="submit" className="submit">
-                Recover Password
+              <button type="submit" className="submit" disabled={loading}>
+                {loading ? "Recovering..." : "Recover Password"}
               </button>
             </form>
           </div>

@@ -1,6 +1,6 @@
 from app import app
 from config import db
-from model.review import Review
+from model.review import Review, datetime
 from model.user import User
 from model.restaurant import Restaurant
 
@@ -77,19 +77,42 @@ with app.app_context():
 
     print('Creating reviews...')
     review1 = Review(
-        Rating=4.5,
-        Content='Good food and service!',
-        user=user1,
+        Rating=4,
+        Content="This is a great restaurant!",
+        Date_Created=datetime(2023, 10, 5),
+        user=user2,
         restaurant=restaurant1
     )
     review2 = Review(
-        Rating=3.5,
-        Content='Nice place but could improve.',
+        Rating=4,
+        Content="This is a great restaurant!",
+        Date_Created=datetime(2023, 10, 5),
         user=user2,
         restaurant=restaurant2
     )
+    review3 = Review(
+        Rating=4,
+        Content="This is a great restaurant!",
+        Date_Created=datetime(2023, 10, 5),
+        user=user2,
+        restaurant=restaurant3
+    )
+    review4 = Review(
+        Rating=4,
+        Content="This is a great restaurant!",
+        Date_Created=datetime(2023, 10, 5),
+        user=user2,
+        restaurant=restaurant4
+    )
+    review5 = Review(
+        Rating=4,
+        Content="This is a great restaurant!",
+        Date_Created=datetime(2023, 10, 5),
+        user=user2,
+        restaurant=restaurant5
+    )
 
-    db.session.add_all([user1, user2, restaurant1, restaurant2, restaurant3, restaurant4,restaurant5, review1, review2])
+    db.session.add_all([user1, user2, restaurant1, restaurant2, restaurant3, restaurant4,restaurant5, review1, review2, review3, review4, review5])
     db.session.commit()
 
 print("Database seeded successfully.")
