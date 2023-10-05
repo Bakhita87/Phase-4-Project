@@ -6,7 +6,7 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 8px;
   color: #888;
-  margin-top: 1000px;
+  margin-top: 0;
 }
 
 .footer-logo {

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { css } from "@emotion/react";
 import HashLoader from "react-spinners/HashLoader";
-import Hero from "./Hero";
-import Footer from "./Footer";
-import Newsletter from "./Newsletter";
+import Hero from "../components/Hero";
+import Footer from "../components/Footer";
+import Newsletter from "../components/Newsletter";
 
 function Welcome() {
   const [loading, setLoading] = useState(false);

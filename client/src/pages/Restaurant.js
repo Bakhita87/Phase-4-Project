@@ -3,6 +3,9 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { css } from "@emotion/react";
 import HashLoader from "react-spinners/HashLoader";
+import Header from "../utils/header";
+// import Pictures from "../utils/picture";
+import OtherContent from "../utils/other";
 
 function Restaurant() {
   const { restaurantId } = useParams();
@@ -37,7 +40,7 @@ function Restaurant() {
     return <div>Loading...</div>;
   }
 
-  const { Name, Amenities, Description, Reviews } = restaurantData;
+  const { Name, Amenities, Description } = restaurantData;
 
   return (
     <div>
@@ -55,33 +58,10 @@ function Restaurant() {
             <nav className="navbar">
               <Link to="/restaurantlist">Back</Link>
             </nav>
-            <h1>{Name}</h1>
-            <p>{Description}</p>
-            <p>{Amenities}</p>
-            <ul>
-              {Array.isArray(Amenities) ? (
-                <ul>
-                  {Amenities.map((amenity) => (
-                    <li key={amenity}>{amenity}</li>
-                  ))}
-                </ul>
-              ) : (
-                <p>Amenities data is not in the expected format.</p>
-              )}
-            </ul>
-            <p>{Reviews}</p>
-            <ul>
-              {Array.isArray(Reviews) ? (
-                Reviews.map((review) => (
-                  <li key={review.Review_ID}>
-                    <p>Rating: {review.Rating}</p>
-                    <p>{review.Content}</p>
-                  </li>
-                ))
-              ) : (
-                <p>Reviews data is not in the expected format.</p>
-              )}
-            </ul>
+            <Header restaurantName={Name} />
+            {/* <Reviews reviews={Reviews} /> */}
+            {/* <Pictures restaurantPictures={"../assets/res1.jpeg"} /> */}
+            <OtherContent amenities={Amenities} description={Description} />
           </div>
         </>
       )}

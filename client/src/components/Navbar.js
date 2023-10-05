@@ -46,7 +46,7 @@ function Navbar() {
           <Link to="/restaurantlist">Restaurants</Link>
         </ul>
         <ul>
-          <Link to="/restaurants">About</Link>
+          <Link to="/reviews">About</Link>
         </ul>
         <ul>
           <Link to="/contact">Contact</Link>

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import HashLoader from "react-spinners/HashLoader";
 import "../styles/Home.css";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 function Home() {
   const [loading, setLoading] = useState(false);

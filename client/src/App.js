@@ -1,13 +1,13 @@
 // App.js
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Welcome from "./components/Welcome";
-import Home from "./components/Home";
-import SignUp from "./components/Signup";
-import Login from "./components/Login";
+import Welcome from "./pages/Welcome";
+import Home from "./pages/Home";
+import SignUp from "./pages/Signup";
+import Login from "./pages/Login";
 import Reviews from "./components/Reviews";
-import Restaurant from "./components/Restaurant";
-import RestaurantList from "./components/Restaurantlist";
+import Restaurant from "./pages/Restaurant";
+import RestaurantList from "./pages/Restaurantlist";
 import Recover from "./components/Recover";
 
 function App() {
