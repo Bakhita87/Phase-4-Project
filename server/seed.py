@@ -17,8 +17,18 @@ with app.app_context():
     Restaurant.query.delete()
     
     print('Creating users...')
-    user1 = User(Username='user1', Email='user1@example.com', Password='password1')
-    user2 = User(Username='user2', Email='user2@example.com', Password='password2')
+    user1 = User(Username='Ann ', Email='ann@example.com', Password='password1')
+    user2 = User(Username='clive moyia', Email='clive@example.com', Password='password2')
+    user3 = User(Username='bakhita', Email='kita@example.com', Password='password3')
+    user4 = User(Username='catherine', Email='cate@example.com', Password='password4')
+    user5 = User(Username='emanuel', Email='manu@example.com', Password='password5')
+
+    # Assign unique User IDs to users
+    user1.User_ID = 1
+    user2.User_ID = 2
+    user3.User_ID = 3
+    user4.User_ID = 4
+    user5.User_ID = 5
 
     print('Creating restaurants...')
     restaurant1 = Restaurant(
@@ -43,25 +53,25 @@ with app.app_context():
         Location='456 Elm St',
         Amenities='Amenities A',
         Description='Authentic cuisine in a vibrant atmosphere.',
-        owner=user2,
-        Image_URL='https://res.cloudinary.com/brickandbatten/images/w_2560,h_2048,c_scale/f_auto,q_auto/v1661299821/wordpress_assets/59026-Jogging-Path-TricornBlackSW-Front-a_4683279cfc/59026-Jogging-Path-TricornBlackSW-Front-a_4683279cfc.jpg?_i=AA' 
-    )
-
-    restaurant3 = Restaurant(
-        Name='Kitas Pizzas',
-        Location='456 Elm St',
-        Amenities='Amenities A',
-        Description='Authentic cuisine in a vibrant atmosphere.',
-        owner=user2,
+        owner=user3,
         Image_URL='https://res.cloudinary.com/brickandbatten/images/w_2560,h_2048,c_scale/f_auto,q_auto/v1661299821/wordpress_assets/59026-Jogging-Path-TricornBlackSW-Front-a_4683279cfc/59026-Jogging-Path-TricornBlackSW-Front-a_4683279cfc.jpg?_i=AA' 
     )
 
     restaurant4 = Restaurant(
+        Name='Kitas Pizzas',
+        Location='456 Elm St',
+        Amenities='Amenities A',
+        Description='Authentic cuisine in a vibrant atmosphere.',
+        owner=user4,
+        Image_URL='https://res.cloudinary.com/brickandbatten/images/w_2560,h_2048,c_scale/f_auto,q_auto/v1661299821/wordpress_assets/59026-Jogging-Path-TricornBlackSW-Front-a_4683279cfc/59026-Jogging-Path-TricornBlackSW-Front-a_4683279cfc.jpg?_i=AA' 
+    )
+
+    restaurant5 = Restaurant(
         Name='Catherines Fries and Chicken',
         Location='456 Elm St',
         Amenities='Amenities A',
         Description='Authentic cuisine in a vibrant atmosphere.',
-        owner=user2,
+        owner=user5,
         Image_URL='https://res.cloudinary.com/brickandbatten/images/w_2560,h_2048,c_scale/f_auto,q_auto/v1661299821/wordpress_assets/59026-Jogging-Path-TricornBlackSW-Front-a_4683279cfc/59026-Jogging-Path-TricornBlackSW-Front-a_4683279cfc.jpg?_i=AA' 
     )
 
@@ -79,7 +89,7 @@ with app.app_context():
         restaurant=restaurant2
     )
 
-    db.session.add_all([user1, user2, restaurant1, restaurant2, review1, review2])
+    db.session.add_all([user1, user2, restaurant1, restaurant2, restaurant3, restaurant4,restaurant5, review1, review2])
     db.session.commit()
 
 print("Database seeded successfully.")
