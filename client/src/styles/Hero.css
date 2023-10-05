@@ -1,0 +1,59 @@
+.hero-container {
+  color: #fff;
+  text-align: center;
+  background: #000;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 96px;
+}
+
+.hero-title {
+  font-size: 4rem;
+  font-weight: bold;
+  margin: 0;
+  color: #00df9a;
+  padding: 1rem 0;
+}
+
+.hero-subtitle {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+  padding: 0.5rem 0;
+}
+
+.typed-container {
+  display: flex;
+  align-items: center;
+}
+
+.typed-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 20px;
+  color: #fff;
+}
+
+.hero-description {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ccc;
+  margin-top: 1rem;
+}
+
+.get-started-button {
+  background-color: #00df9a;
+  color: #000;
+  border: none;
+  border-radius: 4px;
+  font-weight: medium;
+  width: 200px;
+  margin: 1rem auto;
+  padding: 12px 24px;
+  cursor: pointer;
+}

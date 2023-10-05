@@ -1,6 +1,8 @@
 # RESTAURANT REVIEW APP
 
-Restaurant Review App Welcome to the Restaurant Review App. This project allows users to create accounts, login, and share their reviews and ratings for various restaurants. Users can also explore restaurant locations, read other people's reviews, and search for restaurants by location and amenities. Below, you will find an overview of the project's structure, including the frontend and backend components.
+Restaurant Review App Welcome to the Restaurant Review App.
+
+This project allows users to create accounts, login, and share their reviews and ratings for various restaurants. Users can also explore restaurant locations, read other people's reviews, and search for restaurants by location and amenities. Below, you will find an overview of the project's structure, including the frontend and backend components.
 
 Problem Statement In today's fast-paced world, dining out at restaurants has become a common part of our lives. However, with an abundance of dining options available, customers often face challenges when it comes to making informed decisions about where to eat. They rely on reviews and ratings from fellow diners to choose the right restaurant. Yet, finding reliable and comprehensive reviews can be a daunting task, and the process of sharing one's dining experiences needs to be user-friendly and efficient.
 

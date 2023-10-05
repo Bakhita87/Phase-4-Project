@@ -8,6 +8,7 @@ from datetime import datetime
 from model.review import Review
 from model.restaurant import Restaurant
 from model.user import User
+from model.contact import Contact
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
@@ -97,33 +98,110 @@ def login():
         print("Invalid email or password")
         return jsonify({'message': 'Invalid email or password'}), 401
 
+@app.route('/users/retrieve-by-email', methods=['POST'])
+def retrieve_user_by_email():
+    data = request.json
+
+    if 'Email' not in data:
+        return jsonify({'message': 'Please provide an email address'}), 400
+
+    email = data['Email']
+
+    user = User.query.filter_by(Email=email).first()
+
+    if user:
+        user_data = {
+            "User_ID": user.User_ID,
+            "Username": user.Username,
+            "Email": user.Email
+        }
+        return jsonify(user_data), 200
+    else:
+        return jsonify({'message': 'User not found'}), 404
+
+
+@app.route('/users/retrieve-password/<int:user_id>', methods=['GET'])
+def retrieve_password_by_user_id(user_id):
+    user = User.query.get(user_id)
+
+    if user:
+        user_data = {
+            "User_ID": user.User_ID,
+            "Password": user.Password
+        }
+        return jsonify(user_data), 200
+    else:
+        return jsonify({'message': 'User not found'}), 404
+
+@app.route('/restaurants', methods=['GET'])
+def get_all_restaurants():
+    restaurants = Restaurant.query.all()
+    restaurant_list = []
+
+    for restaurant in restaurants:
+        restaurant_data = {
+            "Restaurant_ID": restaurant.Restaurant_ID,
+            "Name": restaurant.Name,
+            "Location": restaurant.Location,
+            "Amenities": restaurant.Amenities,
+            "Description": restaurant.Description,
+            "Owner_User_ID": restaurant.Owner_User_ID,
+            "Image_URL": restaurant.Image_URL  
+        }
+        restaurant_list.append(restaurant_data)
+
+    return jsonify(restaurant_list)
+
+@app.route('/restaurants/<int:restaurant_id>', methods=['GET'])
+def get_restaurant_by_id(restaurant_id):
+    restaurant = Restaurant.query.get(restaurant_id)
+
+    if restaurant is None:
+        return jsonify({'message': 'Restaurant not found'}), 404
+
+    restaurant_data = {
+        "Restaurant_ID": restaurant.Restaurant_ID,
+        "Name": restaurant.Name,
+        "Location": restaurant.Location,
+        "Amenities": restaurant.Amenities,
+        "Description": restaurant.Description,
+        "Owner_User_ID": restaurant.Owner_User_ID,
+        "Image_URL": restaurant.Image_URL
+    }
+
+    return jsonify(restaurant_data)
+
 @app.route("/reviews", methods=["GET"])
 def get_reviews():
-    reviews = Review.query.all()
+    restaurant_id = request.args.get("restaurant_id")
+    
+    reviews = Review.query.filter_by(Restaurant_ID=restaurant_id).all()
+
     review_list = []
     for review in reviews:
         review_data = {
             "Review_ID": review.Review_ID,
             "Rating": review.Rating,
             "Content": review.Content,
-            "Date_Created": review.Date_Created,
+            "Date_Created": review.Date_Created.strftime("%Y-%m-%d %H:%M:%S"),  
             "User_ID": review.User_ID,
             "Restaurant_ID": review.Restaurant_ID,
         }
         review_list.append(review_data)
+
     return jsonify(review_list)
 
 @app.route('/reviews', methods=['POST'])
 def create_review():
     data = request.json
 
-    if 'user_id' not in data or 'restaurant_id' not in data or 'rating' not in data or 'content' not in data:
-        return jsonify({'message': 'Please provide user_id, restaurant_id, rating, and content'}), 400
+    if 'User_ID' not in data or 'Restaurant_ID' not in data or 'Rating' not in data or 'Content' not in data:
+        return jsonify({'message': 'Please provide User_ID, Restaurant_ID, Rating, and Content'}), 400
 
-    user_id = data['user_id']
-    restaurant_id = data['restaurant_id']
-    rating = data['rating']
-    content = data['content']
+    user_id = data['User_ID']
+    restaurant_id = data['Restaurant_ID']
+    rating = data['Rating']
+    content = data['Content']
 
     user = User.query.get(user_id)
     restaurant = Restaurant.query.get(restaurant_id)
@@ -135,7 +213,8 @@ def create_review():
         User_ID=user_id,
         Restaurant_ID=restaurant_id,
         Rating=rating,
-        Content=content
+        Content=content,
+        Date_Created=datetime.now()
     )
 
     try:
@@ -145,7 +224,7 @@ def create_review():
     except Exception as e:
         db.session.rollback()
         return jsonify({'message': 'Failed to create review'}), 500
-
+    
 @app.route("/delete-review/<int:review_id>", methods=["DELETE"])
 def delete_review(review_id):
     review_entry = Review.query.get(review_id)
@@ -156,7 +235,44 @@ def delete_review(review_id):
     else:
         return jsonify({"message": "Review not found"}), 404
 
+@app.route('/contacts', methods=['POST'])
+def create_contact():
+    data = request.json
+
+    if 'name' not in data or 'email' not in data or 'message' not in data:
+        return jsonify({'message': 'Please provide name, email, and message'}), 400
+
+    name = data['name']
+    email = data['email']
+    message = data['message']
+
+    new_contact = Contact(name=name, email=email, message=message)
+
+    try:
+        db.session.add(new_contact)
+        db.session.commit()
+        return jsonify({'message': 'Contact form submitted successfully'}), 201
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'message': 'Failed to submit contact form'}), 500
+
+@app.route('/contacts', methods=['GET'])
+def get_contacts():
+    contacts = Contact.query.all()
+    contact_list = []
+
+    for contact in contacts:
+        contact_data = {
+            'id': contact.id,
+            'name': contact.name,
+            'email': contact.email,
+            'message': contact.message
+        }
+        contact_list.append(contact_data)
+
+    return jsonify(contact_list)
+
 
 
 if __name__ == '__main__':
-    app.run(port=5555)
+    app.run(debug=True)

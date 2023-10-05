@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { css } from "@emotion/react";
 import HashLoader from "react-spinners/HashLoader";
-import axios from "axios"; // Import Axios
 import "../styles/SignUp.css";
 import email_icon from "../assets/email.png";
 import password_icon from "../assets/password.png";
@@ -27,34 +26,30 @@ function Login() {
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleLoginClick = async () => {
-    // Client-side validation
     if (!email || !password) {
       setErrorMessage("Please fill in all the fields.");
       return;
     }
 
     try {
-      const response = await axios.post("http://localhost:5000/login", {
-        email,
-        password,
+      const response = await fetch("http://localhost:5000/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
       });
 
       if (response.status === 200) {
         setErrorMessage("");
         navigate("/home");
-      } else {
+      } else if (response.status === 401) {
         setErrorMessage("Invalid email or password.");
+      } else {
+        setErrorMessage("An error occurred while logging in.");
       }
     } catch (error) {
-      if (error.response) {
-        if (error.response.status === 401) {
-          setErrorMessage("Invalid email or password.");
-        } else {
-          setErrorMessage("An error occurred while logging in.");
-        }
-      } else {
-        setErrorMessage("Network error. Please try again later.");
-      }
+      setErrorMessage("Network error. Please try again later.");
     }
   };
 

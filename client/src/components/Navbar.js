@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-scroll";
-import { useNavigate } from "react-router-dom";
-import logo from "../assets/logo.png";
+import { Link } from "react-router-dom";
+import logo from "../assets/images.png";
 import "../styles/Navbar.css";
 
 function Navbar() {
   const [nav, setNav] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const navigate = useNavigate();
 
   const changeBackground = () => {
     if (window.scrollY >= 50) {
@@ -15,10 +13,6 @@ function Navbar() {
     } else {
       setNav(false);
     }
-  };
-
-  const handleLogout = () => {
-    navigate("/");
   };
 
   useEffect(() => {
@@ -35,7 +29,8 @@ function Navbar() {
 
   return (
     <nav className={nav ? "nav active" : "nav"}>
-      <Link to="main" className="logo">
+      <Link to="/home" className="logo">
+        {" "}
         <img src={logo} alt="" />
       </Link>
       <input className="menu-btn" type="checkbox" id="menu-btn" />
@@ -48,18 +43,16 @@ function Navbar() {
 
       <li className={`menu ${menuOpen ? "open" : ""}`}>
         <ul>
-          <Link to="/restaurants">Restaurants</Link>
+          <Link to="/restaurantlist">Restaurants</Link>
         </ul>
         <ul>
-          <Link to="#">About</Link>
+          <Link to="/about">About</Link>
         </ul>
         <ul>
-          <Link to="#">Contact</Link>
+          <Link to="/contact">Contact</Link>
         </ul>
         <ul>
-          <Link to="#" onClick={handleLogout}>
-            Logout
-          </Link>
+          <Link to="/">Logout</Link>
         </ul>
       </li>
     </nav>

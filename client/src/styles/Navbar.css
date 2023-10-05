@@ -1,4 +1,5 @@
 nav {
+  position: fixed;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -9,6 +10,7 @@ nav {
   z-index: 1;
   background-color: transparent;
   transition: 0.6s ease-in-out;
+  bottom: 90%;
 }
 nav.active {
   box-shadow: 5px 10px 30px rgba(0, 0, 0, 0.157);
@@ -27,7 +29,7 @@ nav li ul a {
   font-size: 1.2rem;
   text-transform: uppercase;
   font-weight: 500;
-  color: #3d2514;
+  color: black;
   letter-spacing: 1px;
   border-radius: 3px;
   transition: 0.2s ease-in-out;
@@ -75,7 +77,7 @@ nav .menu-btn,
     user-select: none;
   }
   nav .menu-icon .nav-icon {
-    background-color: #3d2514;
+    background-color: #ff3c00;
     display: block;
     height: 2px;
     position: relative;

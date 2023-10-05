@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { css } from "@emotion/react";
 import HashLoader from "react-spinners/HashLoader";
@@ -35,15 +34,30 @@ function SignUp() {
     }
 
     try {
-      await axios.post("http://localhost:5000/users", {
-        Username: name,
-        Email: email,
-        Password: password,
+      const response = await fetch("http://localhost:5000/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          Username: name,
+          Email: email,
+          Password: password,
+        }),
       });
-      console.log("Redirecting to login page...");
-      navigate("/login");
+
+      if (response.status === 201) {
+        console.log("Redirecting to login page...");
+        navigate("/login");
+      } else if (response.status === 400) {
+        const data = await response.json();
+        setErrorMessage(data.message);
+      } else {
+        setErrorMessage("An error occurred while signing up.");
+      }
     } catch (error) {
       console.error("Error signing up:", error);
+      setErrorMessage("An error occurred while signing up.");
     }
   };
 

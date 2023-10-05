@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import HashLoader from "react-spinners/HashLoader";
 import "../styles/Home.css";
-import Navbar from "./Navbar";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import res from "../assets/about-image.jpg";
 
 function Home() {
   const [loading, setLoading] = useState(false);
@@ -25,6 +27,8 @@ function Home() {
       ) : (
         <div className="home">
           <Navbar />
+          <img src={res} alt="" style={{ width: "100%" }} />
+          <Footer />
         </div>
       )}
     </div>

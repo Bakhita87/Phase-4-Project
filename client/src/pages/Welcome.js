@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { css } from "@emotion/react";
 import HashLoader from "react-spinners/HashLoader";
-import { Link } from "react-router-dom";
+import Hero from "../components/Hero";
+import Footer from "../components/Footer";
+import Newsletter from "../components/Newsletter";
 
 function Welcome() {
   const [loading, setLoading] = useState(false);
+  const [showNewsletter, setShowNewsletter] = useState(true);
   const override = css`
     display: block;
     border-color: red;
@@ -17,6 +20,11 @@ function Welcome() {
       setLoading(false);
     }, 3000);
   }, []);
+
+  const handleNewsletterClose = () => {
+    setShowNewsletter(false);
+  };
+
   return (
     <div>
       {" "}
@@ -29,13 +37,9 @@ function Welcome() {
         />
       ) : (
         <>
-          {" "}
-          <div className="home container">
-            <h1 className="heading">Your Opinion Matters</h1>
-            <Link to="/signup" className="btn btn-primary btn-lg">
-              Get Started
-            </Link>
-          </div>
+          <Hero />
+          {showNewsletter && <Newsletter onClose={handleNewsletterClose} />}
+          <Footer />
         </>
       )}
     </div>
@@ -61,18 +65,19 @@ export default Welcome;
 //     setLoading(false);
 //   }, 3000);
 // }, []);
-// return (
-//   <div>
-//     {" "}
-//     {loading ? (
-//       <HashLoader
-//         color={"#3d2514"}
-//         loading={loading}
-//         css={override}
-//         size={40}
-//       />
-//     ) : (
-//       <></>
-//     )}
-//   </div>
-// );
+
+// <div>
+//   {" "}
+//   {loading ? (
+//     <HashLoader
+//       color={"#3d2514"}
+//       loading={loading}
+//       css={override}
+//       size={500}
+//     />
+//   ) : (
+//     <>
+//
+//     </>
+//   )}
+// </div>;
