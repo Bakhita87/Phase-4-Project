@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import "../styles/Review.css";
 
-function Reviews() {
+function Reviews({ user }) {
   const [reviews, setReviews] = useState([]);
   const [newReview, setNewReview] = useState("");
   const [rating, setRating] = useState(0);
-  const { id, user } = useParams();
+  const { id } = useParams();
 
   useEffect(() => {
     const fetchReviews = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/reviews-with-restaurants`
+          `http://localhost:5000/reviews?restaurant_id=${id}`
         );
         if (response.status === 200) {
           setReviews(response.data);
@@ -25,10 +26,10 @@ function Reviews() {
     };
 
     fetchReviews();
-  }, []);
+  }, [id, user]);
 
   const handleSubmitReview = async () => {
-    if (!user || !user.id) {
+    if (!user || !user?.id) {
       console.error("User or user.id is undefined");
       return;
     }
@@ -43,7 +44,11 @@ function Reviews() {
     try {
       await axios.post("http://localhost:5000/reviews", reviewData);
       console.log("Review submitted successfully");
-      const response = await axios.get(`http://localhost:5000/reviews`);
+
+      const response = await axios.get(
+        `http://localhost:5000/reviews?restaurant_id=${id}`
+      );
+
       if (response.status === 200) {
         setReviews(response.data);
       }
@@ -88,8 +93,11 @@ function Reviews() {
           <div key={index} className="review-card">
             <p>{review.content}</p>
             <p>Rating: {review.rating}</p>
-            <p>Restaurant: {review.restaurant.name}</p>{" "}
-            {/* Assuming restaurant data is available */}
+            {review.restaurant ? (
+              <p>Restaurant: {review.restaurant.name}</p>
+            ) : (
+              <p>Restaurant: Not specified</p>
+            )}
             <button onClick={() => handleDeleteReview(review.id)}>
               Delete Review
             </button>

@@ -1,11 +1,9 @@
-/* Newsletter container */
 .newsletter-container {
   width: 100%;
   padding: 16px;
-  background-color: #333; /* Background color for the newsletter section */
+  background-color: #333;
 }
 
-/* Newsletter content wrapper */
 .newsletter-content {
   max-width: 1240px;
   margin: 0 auto;
@@ -13,13 +11,11 @@
   grid-template-columns: repeat(3, 1fr);
 }
 
-/* Left column (text content) */
 .left-column {
   grid-column: span 2;
   margin: 16px 0;
 }
 
-/* Newsletter title */
 .newsletter-title {
   font-size: 2xl;
   font-weight: bold;
@@ -27,17 +23,14 @@
   color: #fff;
 }
 
-/* Newsletter description */
 .newsletter-description {
   color: #fff;
 }
 
-/* Right column (email input and button) */
 .right-column {
   margin: 16px 0;
 }
 
-/* Email input */
 .email-input {
   padding: 12px;
   flex: 1;
@@ -47,7 +40,6 @@
   color: #000;
 }
 
-/* Subscribe button */
 .subscribe-button {
   background-color: #00df9a;
   color: #000;
@@ -61,7 +53,6 @@
   cursor: pointer;
 }
 
-/* Privacy policy link */
 .privacy-policy-link {
   color: #00df9a;
 }

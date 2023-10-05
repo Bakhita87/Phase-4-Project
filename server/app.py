@@ -116,9 +116,30 @@ def get_all_restaurants():
 
     return jsonify(restaurant_list)
 
+@app.route('/restaurants/<int:restaurant_id>', methods=['GET'])
+def get_restaurant_by_id(restaurant_id):
+    restaurant = Restaurant.query.get(restaurant_id)
+
+    if restaurant is None:
+        return jsonify({'message': 'Restaurant not found'}), 404
+
+    restaurant_data = {
+        "Restaurant_ID": restaurant.Restaurant_ID,
+        "Name": restaurant.Name,
+        "Location": restaurant.Location,
+        "Amenities": restaurant.Amenities,
+        "Description": restaurant.Description,
+        "Owner_User_ID": restaurant.Owner_User_ID,
+        "Image_URL": restaurant.Image_URL
+    }
+
+    return jsonify(restaurant_data)
+
 @app.route("/reviews", methods=["GET"])
 def get_reviews():
-    reviews = Review.query.all()
+    restaurant_id = request.args.get("restaurant_id")  
+    reviews = Review.query.filter_by(Restaurant_ID=restaurant_id).all()
+
     review_list = []
     for review in reviews:
         review_data = {
@@ -130,6 +151,7 @@ def get_reviews():
             "Restaurant_ID": review.Restaurant_ID,
         }
         review_list.append(review_data)
+
     return jsonify(review_list)
 
 @app.route('/reviews', methods=['POST'])
@@ -174,6 +196,7 @@ def delete_review(review_id):
         return jsonify({"message": "Review deleted successfully"})
     else:
         return jsonify({"message": "Review not found"}), 404
+
 
 
 

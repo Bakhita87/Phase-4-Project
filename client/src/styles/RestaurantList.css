@@ -1,0 +1,88 @@
+.restaurant-list {
+  margin-top: 100px; /* Add margin-top to create space below the navbar */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.restaurant-card {
+  flex-basis: calc(33.33% - 32px);
+  margin: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #d1cece;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+}
+
+.restaurant-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+
+.restaurant-image {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 12px;
+}
+
+.restaurant-name {
+  font-size: 1.2rem;
+  color: #242222;
+  font-weight: bold;
+  margin: 8px 0;
+  text-align: center;
+}
+
+.restaurant-location {
+  font-size: 1rem;
+  color: #242222;
+  text-align: center;
+}
+.navbar {
+  background-color: #f0f0f0;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.navbar a:hover {
+  background-color: #333;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.navbar input[type="text"] {
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.navbar input[type="text"]:focus {
+  outline: none;
+  border-color: #333;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}

@@ -26,6 +26,7 @@ function Home() {
       ) : (
         <div className="home">
           <Navbar />
+
           <Footer />
         </div>
       )}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import "../styles/Navbar.css";
 
@@ -31,7 +31,6 @@ function Navbar() {
     <nav className={nav ? "nav active" : "nav"}>
       <Link to="/" className="logo">
         {" "}
-        {/* Replace with your home page */}
         <img src={logo} alt="" />
       </Link>
       <input className="menu-btn" type="checkbox" id="menu-btn" />
@@ -44,10 +43,10 @@ function Navbar() {
 
       <li className={`menu ${menuOpen ? "open" : ""}`}>
         <ul>
-          <Link to="/restaurants">Restaurants</Link>
+          <Link to="/restaurantlist">Restaurants</Link>
         </ul>
         <ul>
-          <Link to="/reviews">About</Link>
+          <Link to="/restaurants">About</Link>
         </ul>
         <ul>
           <Link to="/contact">Contact</Link>

@@ -11,5 +11,8 @@ class Restaurant(db.Model):
     Owner_User_ID = db.Column(db.Integer, db.ForeignKey('users.User_ID'), unique=True)
     Image_URL = db.Column(db.String)  
 
+
+    
     owner = db.relationship("User", back_populates="owned_restaurant")
     reviews = db.relationship("Review", back_populates="restaurant")
+   
