@@ -1,11 +1,12 @@
 .footer-container {
-  max-width: 1240px;
+  background: black;
+  max-width: 2240px;
   margin: 0 auto;
   padding: 16px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 8px;
-  color: #888;
+  color: #978282;
   margin-top: 0;
 }
 

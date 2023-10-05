@@ -1,12 +1,12 @@
 .restaurant-list {
-  margin-top: 100px; /* Add margin-top to create space below the navbar */
+  margin-top: 100px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 
 .restaurant-card {
-  flex-basis: calc(33.33% - 32px);
+  flex-basis: calc(29.33% - 32px);
   margin: 16px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: #d1cece;
@@ -21,12 +21,6 @@
 .restaurant-card:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transform: scale(1.05);
-}
-
-.restaurant-image {
-  max-width: 100%;
-  height: auto;
-  margin-bottom: 12px;
 }
 
 .restaurant-name {
@@ -85,4 +79,7 @@
   border-color: #333;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transform: translateY(-2px);
+}
+.details {
+  margin-top: 100px;
 }

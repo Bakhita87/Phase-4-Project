@@ -78,6 +78,7 @@ function RestaurantList() {
                       src={restaurant.Image_URL}
                       alt={restaurant.Name}
                       className="restaurant-image"
+                      style={{ width: "500px", height: "450px" }}
                     />
                     <h2 className="restaurant-name">{restaurant.Name}</h2>
                     <p className="restaurant-location">{restaurant.Location}</p>

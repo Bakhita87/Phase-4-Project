@@ -6,6 +6,7 @@ import HashLoader from "react-spinners/HashLoader";
 import Header from "../utils/header";
 // import Pictures from "../utils/picture";
 import OtherContent from "../utils/other";
+import "../styles/RestaurantList.css";
 
 function Restaurant() {
   const { restaurantId } = useParams();
@@ -58,10 +59,12 @@ function Restaurant() {
             <nav className="navbar">
               <Link to="/restaurantlist">Back</Link>
             </nav>
-            <Header restaurantName={Name} />
-            {/* <Reviews reviews={Reviews} /> */}
-            {/* <Pictures restaurantPictures={"../assets/res1.jpeg"} /> */}
-            <OtherContent amenities={Amenities} description={Description} />
+            <div className="details">
+              <Header restaurantName={Name} />
+              {/* <Reviews reviews={Reviews} /> */}
+              {/* <Pictures restaurantPictures={"../assets/res1.jpeg"} /> */}
+              <OtherContent amenities={Amenities} description={Description} />
+            </div>
           </div>
         </>
       )}
