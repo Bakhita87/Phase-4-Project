@@ -61,7 +61,6 @@ function Restaurant() {
             </nav>
             <div className="details">
               <Header restaurantName={Name} />
-              {/* <Reviews reviews={Reviews} /> */}
               {/* <Pictures restaurantPictures={"../assets/res1.jpeg"} /> */}
               <OtherContent amenities={Amenities} description={Description} />
             </div>
