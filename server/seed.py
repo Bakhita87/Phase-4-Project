@@ -38,6 +38,33 @@ with app.app_context():
         Image_URL='https://res.cloudinary.com/brickandbatten/images/w_2560,h_2048,c_scale/f_auto,q_auto/v1661299821/wordpress_assets/59026-Jogging-Path-TricornBlackSW-Front-a_4683279cfc/59026-Jogging-Path-TricornBlackSW-Front-a_4683279cfc.jpg?_i=AA' 
     )
 
+    restaurant3 = Restaurant(
+        Name='Clives Delicacies',
+        Location='456 Elm St',
+        Amenities='Amenities A',
+        Description='Authentic cuisine in a vibrant atmosphere.',
+        owner=user2,
+        Image_URL='https://res.cloudinary.com/brickandbatten/images/w_2560,h_2048,c_scale/f_auto,q_auto/v1661299821/wordpress_assets/59026-Jogging-Path-TricornBlackSW-Front-a_4683279cfc/59026-Jogging-Path-TricornBlackSW-Front-a_4683279cfc.jpg?_i=AA' 
+    )
+
+    restaurant3 = Restaurant(
+        Name='Kitas Pizzas',
+        Location='456 Elm St',
+        Amenities='Amenities A',
+        Description='Authentic cuisine in a vibrant atmosphere.',
+        owner=user2,
+        Image_URL='https://res.cloudinary.com/brickandbatten/images/w_2560,h_2048,c_scale/f_auto,q_auto/v1661299821/wordpress_assets/59026-Jogging-Path-TricornBlackSW-Front-a_4683279cfc/59026-Jogging-Path-TricornBlackSW-Front-a_4683279cfc.jpg?_i=AA' 
+    )
+
+    restaurant4 = Restaurant(
+        Name='Catherines Fries and Chicken',
+        Location='456 Elm St',
+        Amenities='Amenities A',
+        Description='Authentic cuisine in a vibrant atmosphere.',
+        owner=user2,
+        Image_URL='https://res.cloudinary.com/brickandbatten/images/w_2560,h_2048,c_scale/f_auto,q_auto/v1661299821/wordpress_assets/59026-Jogging-Path-TricornBlackSW-Front-a_4683279cfc/59026-Jogging-Path-TricornBlackSW-Front-a_4683279cfc.jpg?_i=AA' 
+    )
+
     print('Creating reviews...')
     review1 = Review(
         Rating=4.5,
