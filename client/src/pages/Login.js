@@ -18,7 +18,7 @@ function Login() {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 3000);
+    }, 2000);
   }, []);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

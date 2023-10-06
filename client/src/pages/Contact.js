@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { css } from "@emotion/react";
 import { useNavigate } from "react-router-dom";
 import HashLoader from "react-spinners/HashLoader";
@@ -20,6 +20,13 @@ function Contact() {
   const [message, setMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
 
   const handleSubmit = async () => {
     if (!name || !email || !message) {
