@@ -41,6 +41,21 @@ def get_all_users():
 
     return jsonify(user_list)
 
+@app.route('/users/<int:user_id>', methods=['GET'])
+def get_user_by_id(user_id):
+    user = User.query.get(user_id)
+
+    if user is None:
+        return jsonify({"error": "User not found"}), 404
+
+    user_data = {
+        "User_ID": user.User_ID,
+        "Username": user.Username,
+        "Email": user.Email,
+    }
+
+    return jsonify(user_data)
+
 @app.route('/users', methods=['POST'])
 def create_new_user():
     data = request.json
