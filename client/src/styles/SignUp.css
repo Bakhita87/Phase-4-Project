@@ -1,3 +1,10 @@
+.loader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: transparent;
+}
 .container {
   justify-content: center;
   align-items: center;
@@ -5,7 +12,8 @@
   flex-direction: column;
   margin: auto;
   margin-top: 200px;
-  background: #fff;
+  background-color: #000;
+  color: #fff;
   padding-bottom: 30px;
 }
 
@@ -19,7 +27,7 @@
 }
 
 .text {
-  color: #3c009d;
+  color: #00df9a;
   font-size: 48px;
   font-weight: 700;
 }
@@ -27,7 +35,7 @@
 .underline {
   width: 61px;
   height: 6px;
-  background: #3c009d;
+  background: #00df9a;
   border-radius: 9px;
 }
 
@@ -44,7 +52,7 @@
   margin: auto;
   width: 480px;
   height: 80px;
-  background: #eaeaea;
+  background: #000;
   border-radius: 6px;
 }
 
@@ -70,7 +78,7 @@
 }
 
 .forgot-password span {
-  color: #4c00b4;
+  color: #00df9a;
   cursor: pointer;
 }
 
@@ -86,8 +94,8 @@
   align-items: center;
   width: 220px;
   height: 59px;
-  color: #fff;
-  background: #4c00b4;
+  color: #000;
+  background: #00df9a;
   border-radius: 50px;
   font-size: 19px;
   font-weight: 700;

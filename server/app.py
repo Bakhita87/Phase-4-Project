@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, session, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_cors import CORS
@@ -13,6 +13,7 @@ from model.contact import Contact
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.secret_key = 'your_secret_key' 
 
 CORS(app)
 
@@ -108,6 +109,9 @@ def login():
 
     if user and check_password_hash(user.Password, password):
         print("Login successful")
+
+        session['user_id'] = user.User_ID
+
         return jsonify({'message': 'Login successful'}), 200
     else:
         print("Invalid email or password")
@@ -147,6 +151,11 @@ def retrieve_password_by_user_id(user_id):
         return jsonify(user_data), 200
     else:
         return jsonify({'message': 'User not found'}), 404
+    
+@app.route('/logout', methods=['POST'])
+def logout():
+    session.pop('user_id', None)
+    return jsonify({'message': 'Logout successful'}), 200
 
 @app.route('/restaurants', methods=['GET'])
 def get_all_restaurants():

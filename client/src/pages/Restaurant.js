@@ -41,7 +41,6 @@ function Restaurant() {
   }, []);
 
   useEffect(() => {
-    // Fetch restaurant details
     fetch(`http://127.0.0.1:5000/restaurants/${restaurantId}`)
       .then((response) => response.json())
       .then((data) => {

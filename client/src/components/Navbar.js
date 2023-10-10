@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import logo from "../assets/images.png";
+import logo from "../assets/logo.png";
 import "../styles/Navbar.css";
+import axios from "axios";
 
 function Navbar() {
   const [nav, setNav] = useState(false);
@@ -25,6 +26,18 @@ function Navbar() {
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
+  };
+
+  const handleLogout = () => {
+    axios
+      .post("/logout")
+      .then((response) => {
+        console.log(response.data.message);
+        sessionStorage.removeItem("user_id");
+      })
+      .catch((error) => {
+        console.error("Logout error:", error);
+      });
   };
 
   return (
@@ -52,7 +65,9 @@ function Navbar() {
           <Link to="/contact">Contact</Link>
         </ul>
         <ul>
-          <Link to="/">Logout</Link>
+          <a href="/" onClick={handleLogout}>
+            Logout
+          </a>
         </ul>
       </li>
     </nav>

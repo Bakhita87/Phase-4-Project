@@ -5,7 +5,7 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   padding: 20px;
   border-radius: 8px;
-  background-color: #948b8b;
+  background-color: #ffff;
   margin: 120px auto;
   max-width: 800px;
 }
@@ -19,7 +19,7 @@
   flex-basis: calc(29.33% - 32px);
   margin: 16px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: #d1cece;
+  background-color: #fff;
   text-decoration: none;
   transition: transform 0.2s, box-shadow 0.2s;
   display: flex;
@@ -29,6 +29,7 @@
 }
 
 .restaurant-card:hover {
+  background: rgb(193, 241, 243);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transform: scale(1.05);
 }
@@ -47,7 +48,7 @@
   text-align: center;
 }
 .navbar {
-  background-color: #f0f0f0;
+  background-color: #000000;
   padding: 10px;
   display: flex;
   justify-content: space-between;
@@ -62,7 +63,7 @@
 
 .navbar a {
   text-decoration: none;
-  color: #333;
+  color: #00df9a;
   font-weight: bold;
   padding: 10px 20px;
   border: 2px solid #ccc;

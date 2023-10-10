@@ -3,7 +3,7 @@ import HashLoader from "react-spinners/HashLoader";
 import "../styles/Home.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import res from "../assets/about-image.jpg";
+import res from "../assets/images.jpeg";
 
 function Home() {
   const [loading, setLoading] = useState(false);

@@ -68,6 +68,7 @@ function SignUp() {
         <HashLoader
           className="loader"
           color={"#3d2514"}
+          bbackground={"#00000"}
           loading={loading}
           css={override}
           size={500}
