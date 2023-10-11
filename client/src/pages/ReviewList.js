@@ -1,5 +1,6 @@
 import React from "react";
 import { FaStar } from "react-icons/fa";
+import "../styles/Review.css";
 
 function Review({ reviews, onDeleteReview }) {
   const renderStarRating = (rating) => {
@@ -32,7 +33,9 @@ function Review({ reviews, onDeleteReview }) {
           </p>
           <p>{review.Content}</p>
           <p>Date Created: {new Date(review.Date_Created).toLocaleString()}</p>
-          <button onClick={() => onDeleteReview(review)}>Delete</button>
+          <button className="delete" onClick={() => onDeleteReview(review)}>
+            Delete
+          </button>
         </div>
       ))}
     </div>

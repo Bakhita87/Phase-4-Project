@@ -31,7 +31,7 @@ function AddReview({ onAddReview, restaurantId }) {
   };
 
   const buttonStyle = {
-    backgroundColor: "#3d2514",
+    backgroundColor: "#00df9a",
     color: "black",
     border: "none",
     borderRadius: "4px",
