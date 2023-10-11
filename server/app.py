@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, session, redirect, url_for
+from flask import Flask, make_response, request, jsonify, session, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_cors import CORS
@@ -15,7 +15,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = 'your_secret_key' 
 
-CORS(app)
+CORS(app, supports_credentials=True)
 
 
 migrate = Migrate(app, db)
@@ -155,7 +155,12 @@ def retrieve_password_by_user_id(user_id):
 @app.route('/logout', methods=['POST'])
 def logout():
     session.pop('user_id', None)
-    return jsonify({'message': 'Logout successful'}), 200
+    print("Logout successful")
+    response = make_response(jsonify({'message': 'Logout successful'}), 200)
+    response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    response.headers['Pragma'] = 'no-cache'
+    response.headers['Expires'] = '0'
+    return response
 
 @app.route('/restaurants', methods=['GET'])
 def get_all_restaurants():

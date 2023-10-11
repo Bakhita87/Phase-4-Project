@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import "../styles/Navbar.css";
-import axios from "axios";
 
 function Navbar() {
   const [nav, setNav] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  // const navigate = useNavigate();
 
   const changeBackground = () => {
     if (window.scrollY >= 50) {
@@ -29,11 +29,18 @@ function Navbar() {
   };
 
   const handleLogout = () => {
-    axios
-      .post("/logout")
+    fetch("http://127.0.0.1:5000/logout", {
+      method: "POST",
+      credentials: "include", // Include credentials in the request
+    })
       .then((response) => {
-        console.log(response.data.message);
-        sessionStorage.removeItem("user_id");
+        if (response.status === 200) {
+          console.log("Logout successful");
+          sessionStorage.removeItem("user_id");
+          window.location.href = "/"; // Redirect to the desired page
+        } else {
+          console.error("Logout failed");
+        }
       })
       .catch((error) => {
         console.error("Logout error:", error);
@@ -43,7 +50,6 @@ function Navbar() {
   return (
     <nav className={nav ? "nav active" : "nav"}>
       <Link to="/home" className="logo">
-        {" "}
         <img src={logo} alt="" />
       </Link>
       <input className="menu-btn" type="checkbox" id="menu-btn" />
@@ -65,9 +71,7 @@ function Navbar() {
           <Link to="/contact">Contact</Link>
         </ul>
         <ul>
-          <a href="/" onClick={handleLogout}>
-            Logout
-          </a>
+          <Link onClick={handleLogout}>Logout</Link>
         </ul>
       </li>
     </nav>
